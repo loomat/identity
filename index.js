@@ -25,10 +25,6 @@ export default class Identity {
         return Promise.resolve(id)
     }
 
-    // static async fromMnemonic(mn){
-    //     return await Identity.create(mn)
-    // }
-
     getAddress(){
         return utils.convert(this._keypair._identifier).from('buf').to('hex')
     }
@@ -50,7 +46,7 @@ export default class Identity {
     }
 
     verify(msg, signature){
-        return this._keypair.verify(keccak256(msg), B64ToBuf(signature))
+        return this._keypair.verify(keccak256(msg), utils.convert(signature).from('b64').to('buf'))
     }
 
     encrypt(msg, encoding = 'base64') {
@@ -66,10 +62,10 @@ export default class Identity {
     decrypt(enc, encoding = 'utf8') {
         var s = enc.split(':')
         var crypt = {}
-        crypt.ct = B64ToBuf(s[0])
-        crypt.epk = B64ToBuf(s[1])
-        crypt.iv = B64ToBuf(s[2])
-        crypt.mac = B64ToBuf(s[3])
+        crypt.ct = utils.convert(s[0]).from('b64').to('buf')
+        crypt.epk = utils.convert(s[1]).from('b64').to('buf')
+        crypt.iv = utils.convert(s[2]).from('b64').to('buf')
+        crypt.mac = utils.convert(s[3]).from('b64').to('buf')
 
         // TODO : FIX THIS
         crypt.mac.__proto__.compare =  this._keypair._publicKey.__proto__.compare
