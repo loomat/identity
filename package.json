@@ -1,0 +1,26 @@
+{
+  "name": "@loomat/identity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loomat/identity.git"
+  },
+  "author": "sando",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loomat/identity/issues"
+  },
+  "homepage": "https://github.com/loomat/identity#readme",
+  "dependencies": {
+    "bip39": "^3.1.0",
+    "ecies-lite": "^1.1.3",
+    "hdkey": "^2.1.0",
+    "keccak256": "^1.0.6"
+  }
+}
